@@ -4,67 +4,61 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>18. Кристина — приглашение</title>
-  <meta name="description" content="Онлайн-приглашение на 18-летие Кристины: место, время, wish list и RSVP" />
+  <meta name="description" content="Онлайн-приглашение на 18-летие Кристины: место, время, wish list и RSVP">
 
+  <!-- New fonts for equal numerals -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#f9f4f2;
-      --card:#ffffff;
-      --text:#2a2a2a;
-      --muted:#6b7280;
-      --accent:#e6b2c6;
-      --accent-2:#b692c2;
-      --radius:18px;
-      --shadow:0 10px 30px rgba(0,0,0,.08);
-      --max: 980px;
+      --bg:#faf6f5; --card:#ffffff; --text:#272424; --muted:#6c6a6a;
+      --accent:#f3c8d6; --radius:18px; --shadow:0 12px 30px rgba(0,0,0,.08); --max: 980px;
     }
-    html,body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-    h1,h2,.serif{font-family:'Playfair Display',serif}
+    html,body{margin:0;background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    h1,h2,.serif{font-family:'Marcellus',serif; letter-spacing:.2px; font-variant-numeric: lining-nums tabular-nums;}
     a{color:#6b5bbd;text-decoration:none}
     img{max-width:100%;display:block}
     .container{max-width:var(--max);margin:0 auto;padding:24px}
-    header.hero{position:relative;min-height:78vh;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid #ebdde1}
-    .hero-bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(249,244,242,.75)), url('./images/hero.jpg') center/cover no-repeat;will-change:transform;filter:blur(1.2px) saturate(.98);transform:translateY(0)}
-    .hero-card{position:relative;background:linear-gradient(160deg,rgba(255,255,255,.78),rgba(255,255,255,.6));backdrop-filter: blur(3px);border-radius:calc(var(--radius) + 8px);padding:28px 28px 22px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,.06);width:min(760px,92%);text-align:center}
-    .title{font-weight:700;font-size:46px;line-height:1.12;margin:2px 0 6px;letter-spacing:.3px}
-    .heart{display:inline-block;color:#e6b2c6;text-shadow:0 2px 8px rgba(230,178,198,.45);transform:translateY(-.05em);animation:beat 2s ease-in-out infinite}
-    @keyframes beat{0%,100%{transform:scale(1) translateY(-.05em)}25%{transform:scale(1.12) translateY(-.05em)}}
-    .subtitle{color:var(--muted);font-size:16px;margin:0 0 16px}
-    .pill{display:inline-block;padding:8px 14px;border-radius:30px;background:rgba(230,178,198,.18);color:#5e424f;border:1px solid rgba(230,178,198,.55);font-weight:700;margin:0 6px}
+    header.hero{position:relative;min-height:82vh;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid #eddfe3}
+    .hero-bg{position:absolute;inset:0;background:
+      linear-gradient(180deg,rgba(255,255,255,.15),rgba(250,246,245,.85)),
+      url('./images/hero.jpg') center/cover no-repeat;
+      will-change:transform; filter:blur(.6px) saturate(1.05) brightness(.98); transform:translateY(0)}
+    .hero-card{position:relative;background:rgba(255,255,255,.62);backdrop-filter: blur(6px);
+      border-radius:26px;padding:32px 30px 24px;box-shadow:var(--shadow);
+      border:1px solid rgba(0,0,0,.06);width:min(780px,92%);text-align:center}
+    .title{font-weight:700;font-size:56px;line-height:1.06;margin:4px 0 8px; font-variant-numeric: lining-nums tabular-nums;}
+    .heart{display:inline-block;color:var(--accent);text-shadow:0 1px 4px rgba(243,200,214,.35);
+      transform:translateY(-.06em);animation:beat 4s ease-in-out infinite}
+    @keyframes beat{0%,100%{transform:scale(1) translateY(-.06em)}50%{transform:scale(1.06) translateY(-.06em)}}
+    .subtitle{color:#5c5457;font-size:16px;margin:0 0 12px}
+    .pill{display:inline-block;padding:8px 14px;border-radius:30px;background:rgba(243,200,214,.22);
+      color:#4e3a42;border:1px solid rgba(243,200,214,.45);font-weight:700;margin:0 6px}
     .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:16px}
     .btn{appearance:none;border:0;cursor:pointer;border-radius:14px;padding:12px 16px;font-weight:700}
-    .btn-primary{background:var(--accent);color:#3a2630}
-    .btn-ghost{background:rgba(0,0,0,.04);color:#1f1f1f;border:1px solid rgba(0,0,0,.08)}
-    nav.tabs{position:sticky;top:0;background:rgba(249,244,242,.85);backdrop-filter: blur(8px);border-bottom:1px solid #ebdde1;z-index:50}
+    .btn-primary{background:var(--accent);color:#3a2730}
+    .btn-ghost{background:rgba(255,255,255,.7);color:#1f1f1f;border:1px solid rgba(0,0,0,.08)}
+    nav.tabs{position:sticky;top:0;background:rgba(250,246,245,.8);backdrop-filter: blur(10px);border-bottom:1px solid #eddfe3;z-index:50}
     .tabs .container{display:flex;gap:14px;flex-wrap:wrap}
-    .tab{padding:12px 10px;color:var(--muted)} .tab:hover{color:#000}
+    .tab{padding:12px 10px;color:#7b7275} .tab:hover{color:#000}
     .floating{position:fixed;top:14px;right:14px;z-index:60;display:flex;gap:8px}
     .floating .btn{padding:10px 12px}
     section{scroll-margin-top:70px}
     .grid{display:grid;gap:18px}
     .card{background:var(--card);border:1px solid #efe3e6;border-radius:var(--radius);box-shadow:var(--shadow)}
     .card .card-inner{padding:20px}
-    .h2{font-size:28px;margin:0 0 8px}
+    .h2{font-size:34px;margin:0 0 6px; font-variant-numeric: lining-nums tabular-nums;}
     .muted{color:var(--muted)}
     .row{display:flex;gap:16px;flex-wrap:wrap}
     .badge{display:inline-flex;align-items:center;gap:8px;background:#fff7f9;border:1px solid #f1d9e3;border-radius:12px;padding:8px 12px;color:#5a5a5a}
     .color-dot{width:14px;height:14px;border-radius:50%}
     .info{display:grid;gap:18px;grid-template-columns:1fr;} @media(min-width:900px){.info{grid-template-columns:1.2fr .8fr}}
-    .map{aspect-ratio:16/9;border:0;border-top-left-radius:var(--radius);border-top-right-radius:var(--radius)}
     .countdown{display:flex;justify-content:center;gap:14px;margin-top:10px}
     .cd-item{background:#fff;border:1px solid #ecdde3;padding:12px 10px;border-radius:12px;min-width:70px}
-    .cd-num{font-size:24px;font-weight:800;text-align:center}
+    .cd-num{font-size:24px;font-weight:800;text-align:center;font-family:'DM Sans',sans-serif; font-variant-numeric: tabular-nums;}
     .cd-label{font-size:11px;color:var(--muted);text-align:center}
-    .timeline{position:relative;padding-left:22px}
-    .timeline:before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:#eadfe1}
-    .t-item{position:relative;margin:14px 0}
-    .t-item:before{content:"";position:absolute;left:-4px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
-    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px} @media(min-width:720px){.gallery{grid-template-columns:repeat(4,1fr)}}
-    .gallery img{border-radius:12px;border:1px solid #eadfe1}
     .divider{display:flex;align-items:center;gap:10px;margin:14px 0 4px;}
     .divider:before,.divider:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(0,0,0,.06),rgba(0,0,0,.18),rgba(0,0,0,.06))}
     .divider .spark{font-size:14px;opacity:.6}
@@ -72,15 +66,18 @@
     .wish-card{position:relative;border:1px solid #eadfe1;border-radius:14px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
     .wish-img{aspect-ratio:4/3;object-fit:cover;width:100%}
     .wish-body{padding:10px 12px}
-    .wish-title{font-weight:700;margin:0 0 6px;font-family:'Playfair Display',serif}
+    .wish-title{font-weight:700;margin:0 0 6px;font-family:'Marcellus',serif}
     .wish-meta{font-size:12px;color:var(--muted)}
     .wish-actions{display:flex;gap:8px;margin-top:10px}
     .wish-actions a,.wish-actions button{flex:1;text-align:center}
     .booked{opacity:.65}
-    .booked-badge{position:absolute;top:10px;left:10px;background:rgba(230,178,198,.9);color:#3a2630;font-weight:800;font-size:12px;padding:6px 8px;border-radius:10px;border:1px solid rgba(0,0,0,.06);display:none}
+    .booked-badge{position:absolute;top:10px;left:10px;background:rgba(243,200,214,.9);color:#3a2630;font-weight:800;font-size:12px;padding:6px 8px;border-radius:10px;border:1px solid rgba(0,0,0,.06);display:none}
     .booked .booked-badge{display:inline-block}
     footer{padding:40px 0;color:var(--muted);text-align:center}
     .note{background:#fff7f9;border:1px dashed #e7bfd0;padding:12px 14px;border-radius:12px;color:#5a3c47}
+    .schedule{display:grid;gap:10px}
+    .schedule-item{display:grid;grid-template-columns:90px 1fr;gap:14px;align-items:start}
+    .schedule-time{font-weight:800}
   </style>
 </head>
 <body>
@@ -89,7 +86,6 @@
   <button id="musicToggle" class="btn btn-ghost">Музыка: вкл</button>
   <a class="btn btn-primary" href="https://t.me/dioravva" target="_blank" rel="noopener">Написать в Telegram</a>
 </div>
-
 <audio id="bgAudio" loop preload="auto" src="./music.mp3"></audio>
 
 <header class="hero" id="home">
@@ -174,7 +170,7 @@
     <div class="card">
       <div class="card-inner">
         <h2 class="h2 serif">Дресс-код</h2>
-        <p class="muted">Уютный минимализм. Вы — ваша лучшая версия. Думайте о комфорте и лёгкой элегантности. Для девушек — нежно-розовый, бежевый, пастельные светлые оттенки; для мужчин — белый и коричневый.</p>
+        <p class="muted">Уютный минимализм. Вы — ваша лучшая версия. Для девушек — нежно-розовый, бежевый, пастельные светлые; для мужчин — белый и коричневый.</p>
         <div class="row" style="margin-top:12px">
           <div class="muted" style="margin:4px 0; width:100%">Для девушек:</div>
           <span class="badge"><span class="color-dot" style="background:#F2C9D0"></span> #F2C9D0</span>
@@ -222,10 +218,10 @@
     <div class="card">
       <div class="card-inner">
         <h2 class="h2 serif">Программа вечера</h2>
-        <div class="timeline">
-          <div class="t-item"><div style="font-weight:700">15:30</div><div class="muted">Сбор гостей, welcome-drinks</div></div>
-          <div class="t-item"><div style="font-weight:700">16:30</div><div class="muted">Тёплые слова и фото</div></div>
-          <div class="t-item"><div style="font-weight:700">18:00</div><div class="muted">Ужин</div></div>
+        <div class="schedule">
+          <div class="schedule-item"><div class="schedule-time">15:30</div><div class="muted">Сбор гостей, welcome-drinks</div></div>
+          <div class="schedule-item"><div class="schedule-time">16:30</div><div class="muted">Тёплые слова и фото</div></div>
+          <div class="schedule-item"><div class="schedule-time">18:00</div><div class="muted">Ужин</div></div>
         </div>
       </div>
     </div>
@@ -262,7 +258,7 @@
   const heroBg = document.getElementById('hero-bg');
   let lastY=0, ticking=false;
   function onScroll(){ lastY = window.scrollY || window.pageYOffset; if(!ticking){ requestAnimationFrame(updateParallax); ticking=true; } }
-  function updateParallax(){ const y = Math.min(lastY, 800); heroBg.style.transform = `translateY(${y*0.15}px) scale(1.05)`; ticking=false; }
+  function updateParallax(){ const y = Math.min(lastY, 800); heroBg.style.transform = `translateY(${y*0.14}px) scale(1.04)`; ticking=false; }
   window.addEventListener('scroll', onScroll, {passive:true});
 
   // Countdown
@@ -291,18 +287,43 @@
   startCountdown();
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Music toggle
+  // Music toggle: local file or ambient fallback
   const audio = document.getElementById('bgAudio');
   const musicToggle = document.getElementById('musicToggle');
+  let ctx, ambientRunning=false;
+  function startAmbient(){
+    if(ambientRunning) return;
+    ambientRunning=true;
+    ctx = new (window.AudioContext||window.webkitAudioContext)();
+    const master = ctx.createGain(); master.gain.value = 0.14; master.connect(ctx.destination);
+    const notes = [261.63, 329.63, 392.00, 523.25];
+    function pad(freq, delay){
+      const osc = ctx.createOscillator(); osc.type='sine'; osc.frequency.value=freq;
+      const g = ctx.createGain(); g.gain.setValueAtTime(0, ctx.currentTime+delay);
+      g.gain.linearRampToValueAtTime(0.12, ctx.currentTime+delay+2);
+      g.gain.linearRampToValueAtTime(0.0, ctx.currentTime+delay+8);
+      const filt = ctx.createBiquadFilter(); filt.type='lowpass'; filt.frequency.value=1200;
+      osc.connect(filt); filt.connect(g); g.connect(master);
+      osc.start(ctx.currentTime+delay); osc.stop(ctx.currentTime+delay+9);
+    }
+    function playLoop(){
+      notes.forEach((n,i)=>pad(n, i*2.2));
+      setTimeout(playLoop, 8500);
+    }
+    playLoop();
+  }
+  function stopAmbient(){ if(!ctx) return; ctx.close(); ctx=null; ambientRunning=false; }
+
   audio.volume = 0.5;
   musicToggle.addEventListener('click', async ()=>{
     try{
-      if(audio.paused){ await audio.play(); musicToggle.textContent = 'Музыка: выкл'; }
-      else { audio.pause(); musicToggle.textContent = 'Музыка: вкл'; }
-    }catch(e){ alert('Нажмите ещё раз для включения звука.'); }
+      if(audio.paused && !ambientRunning){ await audio.play(); musicToggle.textContent = 'Музыка: выкл'; }
+      else if(!audio.paused){ audio.pause(); musicToggle.textContent = 'Музыка: вкл'; }
+      else if(ambientRunning){ stopAmbient(); musicToggle.textContent = 'Музыка: вкл'; }
+    }catch(e){ startAmbient(); musicToggle.textContent = 'Музыка: выкл'; }
   });
 
-  // Wish list (no denim skirt)
+  // Wishlist (no denim skirt)
   const wishlist = [
     { id:'311624756', title:'Юбка-баллон', platform:'WB', article:'311624756', img:'./images/wish-311624756.jpg', url:'https://www.wildberries.ru/catalog/0/search.aspx?search=311624756' },
     { id:'304378746', title:'Постельное бельё', platform:'WB', article:'304378746', img:'./images/wish-304378746.jpg', url:'https://www.wildberries.ru/catalog/0/search.aspx?search=304378746' },
