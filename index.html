@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>18. Кристина — приглашение</title>
+  <meta name="description" content="Онлайн-приглашение на 18-летие Кристины: место, время, wish list и RSVP" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f9f4f2;
+      --card:#ffffff;
+      --text:#2a2a2a;
+      --muted:#6b7280;
+      --accent:#e6b2c6;
+      --accent-2:#b692c2;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --max: 980px;
+    }
+    html,body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    h1,h2,.serif{font-family:'Playfair Display',serif}
+    a{color:#6b5bbd;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--max);margin:0 auto;padding:24px}
+    header.hero{position:relative;min-height:78vh;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid #ebdde1}
+    .hero-bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(249,244,242,.75)), url('./images/hero.jpg') center/cover no-repeat;will-change:transform;filter:blur(1.2px) saturate(.98);transform:translateY(0)}
+    .hero-card{position:relative;background:linear-gradient(160deg,rgba(255,255,255,.78),rgba(255,255,255,.6));backdrop-filter: blur(3px);border-radius:calc(var(--radius) + 8px);padding:28px 28px 22px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,.06);width:min(760px,92%);text-align:center}
+    .title{font-weight:700;font-size:46px;line-height:1.12;margin:2px 0 6px;letter-spacing:.3px}
+    .heart{display:inline-block;color:#e6b2c6;text-shadow:0 2px 8px rgba(230,178,198,.45);transform:translateY(-.05em);animation:beat 2s ease-in-out infinite}
+    @keyframes beat{0%,100%{transform:scale(1) translateY(-.05em)}25%{transform:scale(1.12) translateY(-.05em)}}
+    .subtitle{color:var(--muted);font-size:16px;margin:0 0 16px}
+    .pill{display:inline-block;padding:8px 14px;border-radius:30px;background:rgba(230,178,198,.18);color:#5e424f;border:1px solid rgba(230,178,198,.55);font-weight:700;margin:0 6px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:16px}
+    .btn{appearance:none;border:0;cursor:pointer;border-radius:14px;padding:12px 16px;font-weight:700}
+    .btn-primary{background:var(--accent);color:#3a2630}
+    .btn-ghost{background:rgba(0,0,0,.04);color:#1f1f1f;border:1px solid rgba(0,0,0,.08)}
+    nav.tabs{position:sticky;top:0;background:rgba(249,244,242,.85);backdrop-filter: blur(8px);border-bottom:1px solid #ebdde1;z-index:50}
+    .tabs .container{display:flex;gap:14px;flex-wrap:wrap}
+    .tab{padding:12px 10px;color:var(--muted)} .tab:hover{color:#000}
+    .floating{position:fixed;top:14px;right:14px;z-index:60;display:flex;gap:8px}
+    .floating .btn{padding:10px 12px}
+    section{scroll-margin-top:70px}
+    .grid{display:grid;gap:18px}
+    .card{background:var(--card);border:1px solid #efe3e6;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card .card-inner{padding:20px}
+    .h2{font-size:28px;margin:0 0 8px}
+    .muted{color:var(--muted)}
+    .row{display:flex;gap:16px;flex-wrap:wrap}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:#fff7f9;border:1px solid #f1d9e3;border-radius:12px;padding:8px 12px;color:#5a5a5a}
+    .color-dot{width:14px;height:14px;border-radius:50%}
+    .info{display:grid;gap:18px;grid-template-columns:1fr;} @media(min-width:900px){.info{grid-template-columns:1.2fr .8fr}}
+    .map{aspect-ratio:16/9;border:0;border-top-left-radius:var(--radius);border-top-right-radius:var(--radius)}
+    .countdown{display:flex;justify-content:center;gap:14px;margin-top:10px}
+    .cd-item{background:#fff;border:1px solid #ecdde3;padding:12px 10px;border-radius:12px;min-width:70px}
+    .cd-num{font-size:24px;font-weight:800;text-align:center}
+    .cd-label{font-size:11px;color:var(--muted);text-align:center}
+    .timeline{position:relative;padding-left:22px}
+    .timeline:before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:#eadfe1}
+    .t-item{position:relative;margin:14px 0}
+    .t-item:before{content:"";position:absolute;left:-4px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px} @media(min-width:720px){.gallery{grid-template-columns:repeat(4,1fr)}}
+    .gallery img{border-radius:12px;border:1px solid #eadfe1}
+    .divider{display:flex;align-items:center;gap:10px;margin:14px 0 4px;}
+    .divider:before,.divider:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(0,0,0,.06),rgba(0,0,0,.18),rgba(0,0,0,.06))}
+    .divider .spark{font-size:14px;opacity:.6}
+    .wish-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:10px}
+    .wish-card{position:relative;border:1px solid #eadfe1;border-radius:14px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+    .wish-img{aspect-ratio:4/3;object-fit:cover;width:100%}
+    .wish-body{padding:10px 12px}
+    .wish-title{font-weight:700;margin:0 0 6px;font-family:'Playfair Display',serif}
+    .wish-meta{font-size:12px;color:var(--muted)}
+    .wish-actions{display:flex;gap:8px;margin-top:10px}
+    .wish-actions a,.wish-actions button{flex:1;text-align:center}
+    .booked{opacity:.65}
+    .booked-badge{position:absolute;top:10px;left:10px;background:rgba(230,178,198,.9);color:#3a2630;font-weight:800;font-size:12px;padding:6px 8px;border-radius:10px;border:1px solid rgba(0,0,0,.06);display:none}
+    .booked .booked-badge{display:inline-block}
+    footer{padding:40px 0;color:var(--muted);text-align:center}
+    .note{background:#fff7f9;border:1px dashed #e7bfd0;padding:12px 14px;border-radius:12px;color:#5a3c47}
+  </style>
+</head>
+<body>
+
+<div class="floating">
+  <button id="musicToggle" class="btn btn-ghost">Музыка: вкл</button>
+  <a class="btn btn-primary" href="https://t.me/dioravva" target="_blank" rel="noopener">Написать в Telegram</a>
+</div>
+
+<audio id="bgAudio" loop preload="auto" src="./music.mp3"></audio>
+
+<header class="hero" id="home">
+  <div class="hero-bg" id="hero-bg"></div>
+  <div class="hero-card">
+    <div class="pill" id="date-pill">20 сентября 2025 · 15:30</div>
+    <h1 class="title"><span class="serif">18</span> <span class="heart" aria-hidden="true">♥</span> <span class="serif">Кристина</span></h1>
+    <p class="subtitle">Приглашаю разделить тепло этого вечера</p>
+    <div class="countdown" id="countdown" aria-live="polite"></div>
+    <div class="actions">
+      <a class="btn btn-primary" href="#message">Смотреть детали</a>
+      <a class="btn btn-ghost" href="#rsvp">Ответить (RSVP)</a>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="container">
+    <a class="tab" href="#message">Письмо</a>
+    <a class="tab" href="#info">Место</a>
+    <a class="tab" href="#wishlist">wish list</a>
+    <a class="tab" href="#dresscode">Дресскод</a>
+    <a class="tab" href="#guestbook">Гостевая</a>
+    <a class="tab" href="#schedule">Программа</a>
+    <a class="tab" href="#gallery">Фото</a>
+    <a class="tab" href="#rsvp">RSVP</a>
+  </div>
+</nav>
+
+<main class="container">
+
+  <section id="message" class="grid" style="margin-top:18px">
+    <div class="card">
+      <div class="card-inner">
+        <h2 class="h2 serif">18. Кристина</h2>
+        <div style="line-height:1.8">
+          <p>Привет, дорогой друг.</p>
+          <p>Этот день я бы не хотела делить с кем бы то ни было ещё. Только с теми, кто делает мою жизнь ярче и чьё присутствие для меня — подарок. С тобой.</p>
+          <p>Приглашаю вас разделить со мной тепло этого вечера и отметить моё восемнадцатилетие.</p>
+          <p><strong>Встречаемся:</strong> Пирочи, ул. Окская 232А<br>
+          <strong>Собираемся:</strong> 20.09.2025 в 15:30<br>
+          Место, где будет уютно, светло и по-настоящему.</p>
+          <div class="divider"><span class="spark">✧</span></div>
+          <p><em>С любовью,<br>Кристина.</em></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="info" class="grid info">
+    <div class="card">
+      <div class="card-inner">
+        <h2 class="h2 serif">Где и когда</h2>
+        <p class="muted">20 сентября 2025 · 15:30</p>
+        <div class="row" style="margin-top:10px">
+          <span class="badge">📍 <strong>Пирочи</strong></span>
+          <span class="badge">🗺️ <span>ул. Окская 232А</span></span>
+        </div>
+        <div class="actions" style="justify-content:flex-start;margin-top:16px">
+          <a class="btn btn-primary" href="https://www.google.com/maps?q=Пирочи, ул. Окская 232А" target="_blank" rel="noopener">Открыть карту</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="wishlist" class="grid" style="margin-top:18px">
+    <div class="card">
+      <div class="card-inner">
+        <h2 class="h2 serif">wish list</h2>
+        <div class="note" style="margin:8px 0 10px">
+          <strong>Мои пожелания:</strong><br>
+          Главный подарок — ваше присутствие. Но если вы хотите сделать мне приятное, мой wish list поможет с идеей.
+        </div>
+        <p class="muted">Если вы выбираете одежду, мой размер — самый маленький: 38–42 (XXS–XS).</p>
+        <div class="wish-grid" id="wishGrid"></div>
+        <p class="muted" style="margin-top:12px">Пожалуйста, отметьте выбранный подарок в RSVP или напишите мне, чтобы избежать повторов.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="dresscode" class="grid" style="margin-top:18px">
+    <div class="card">
+      <div class="card-inner">
+        <h2 class="h2 serif">Дресс-код</h2>
+        <p class="muted">Уютный минимализм. Вы — ваша лучшая версия. Думайте о комфорте и лёгкой элегантности. Для девушек — нежно-розовый, бежевый, пастельные светлые оттенки; для мужчин — белый и коричневый.</p>
+        <div class="row" style="margin-top:12px">
+          <div class="muted" style="margin:4px 0; width:100%">Для девушек:</div>
+          <span class="badge"><span class="color-dot" style="background:#F2C9D0"></span> #F2C9D0</span>
+          <span class="badge"><span class="color-dot" style="background:#E7D2BE"></span> #E7D2BE</span>
+          <span class="badge"><span class="color-dot" style="background:#F3EFE3"></span> #F3EFE3</span>
+        </div>
+        <div class="row" style="margin-top:8px">
+          <div class="muted" style="margin:4px 0; width:100%">Для мужчин:</div>
+          <span class="badge"><span class="color-dot" style="background:#FFFFFF"></span> #FFFFFF</span>
+          <span class="badge"><span class="color-dot" style="background:#4A2B26"></span> #4A2B26</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="guestbook" class="grid" style="margin-top:18px">
+    <div class="card">
+      <div class="card-inner">
+        <h2 class="h2 serif">Гостевая</h2>
+        <div class="grid" style="grid-template-columns:1fr;gap:16px">
+          <div class="note">
+            <strong>Добавить фото</strong><br>
+            Выберите фото — они появятся внизу для предпросмотра. Чтобы поделиться ими со мной, нажмите «Открыть Telegram» и прикрепите файлы в чат. Фото <em>нигде не сохраняются</em> на сайте.
+          </div>
+          <input id="photoInput" type="file" accept="image/*" multiple style="padding:10px;border:1px solid #eadfe1;border-radius:12px;background:#fff">
+          <div id="photoPreview" class="gallery"></div>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://t.me/dioravva" target="_blank" rel="noopener">Открыть Telegram @dioravva</a>
+          </div>
+
+          <div class="note">
+            <strong>Пожелания</strong><br>
+            Напишите тёплые слова — кнопка ниже откроет Telegram с готовым сообщением.
+          </div>
+          <textarea id="wishText" rows="4" placeholder="Ваше пожелание…" style="width:100%;padding:12px;border:1px solid #eadfe1;border-radius:12px"></textarea>
+          <div class="actions">
+            <a id="sendWish" class="btn btn-ghost" href="#" target="_blank" rel="noopener">Отправить в Telegram</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="schedule" class="grid" style="margin-top:18px">
+    <div class="card">
+      <div class="card-inner">
+        <h2 class="h2 serif">Программа вечера</h2>
+        <div class="timeline">
+          <div class="t-item"><div style="font-weight:700">15:30</div><div class="muted">Сбор гостей, welcome-drinks</div></div>
+          <div class="t-item"><div style="font-weight:700">16:30</div><div class="muted">Тёплые слова и фото</div></div>
+          <div class="t-item"><div style="font-weight:700">18:00</div><div class="muted">Ужин</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="grid" style="margin-top:18px">
+    <div class="card">
+      <div class="card-inner">
+        <h2 class="h2 serif">Фото</h2>
+        <div class="gallery"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rsvp" class="grid" style="margin-top:18px">
+    <div class="card">
+      <div class="card-inner">
+        <h2 class="h2 serif">RSVP</h2>
+        <p class="muted">Сообщите, сможете ли прийти, и укажите сопровождающих/пожелания.</p>
+        <div class="actions">
+          <a class="btn btn-primary" target="_blank" rel="noopener" href="#">Скоро будет форма</a>
+          <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://t.me/dioravva">Написать в Telegram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>Сделано с любовью ♥ | © <span id="year"></span></footer>
+
+<script>
+  // Parallax
+  const heroBg = document.getElementById('hero-bg');
+  let lastY=0, ticking=false;
+  function onScroll(){ lastY = window.scrollY || window.pageYOffset; if(!ticking){ requestAnimationFrame(updateParallax); ticking=true; } }
+  function updateParallax(){ const y = Math.min(lastY, 800); heroBg.style.transform = `translateY(${y*0.15}px) scale(1.05)`; ticking=false; }
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  // Countdown
+  const pad = (n)=>String(n).padStart(2,'0');
+  function startCountdown(){
+    const box = document.getElementById('countdown');
+    function render(diff){
+      box.innerHTML = '';
+      const make = (n,l)=>`<div class="cd-item"><div class="cd-num">${pad(n)}</div><div class="cd-label">${l}</div></div>`;
+      box.insertAdjacentHTML('beforeend', make(diff.days,'дней'));
+      box.insertAdjacentHTML('beforeend', make(diff.hours,'часов'));
+      box.insertAdjacentHTML('beforeend', make(diff.mins,'минут'));
+      box.insertAdjacentHTML('beforeend', make(diff.secs,'секунд'));
+    }
+    function tick(){
+      const now = new Date(); const tgt = new Date(2025,8,20,15,30);
+      const ms = tgt - now; if (ms<=0){ render({days:0,hours:0,mins:0,secs:0}); clearInterval(tmr); return; }
+      const days = Math.floor(ms/86400000);
+      const hours = Math.floor((ms%86400000)/3600000);
+      const mins = Math.floor((ms%3600000)/60000);
+      const secs = Math.floor((ms%60000)/1000);
+      render({days,hours,mins,secs});
+    }
+    tick(); const tmr = setInterval(tick,1000);
+  }
+  startCountdown();
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Music toggle
+  const audio = document.getElementById('bgAudio');
+  const musicToggle = document.getElementById('musicToggle');
+  audio.volume = 0.5;
+  musicToggle.addEventListener('click', async ()=>{
+    try{
+      if(audio.paused){ await audio.play(); musicToggle.textContent = 'Музыка: выкл'; }
+      else { audio.pause(); musicToggle.textContent = 'Музыка: вкл'; }
+    }catch(e){ alert('Нажмите ещё раз для включения звука.'); }
+  });
+
+  // Wish list (no denim skirt)
+  const wishlist = [
+    { id:'311624756', title:'Юбка-баллон', platform:'WB', article:'311624756', img:'./images/wish-311624756.jpg', url:'https://www.wildberries.ru/catalog/0/search.aspx?search=311624756' },
+    { id:'304378746', title:'Постельное бельё', platform:'WB', article:'304378746', img:'./images/wish-304378746.jpg', url:'https://www.wildberries.ru/catalog/0/search.aspx?search=304378746' },
+    { id:'202542554', title:'Хайлайтер', platform:'WB', article:'202542554', img:'./images/wish-202542554.jpg', url:'https://www.wildberries.ru/catalog/0/search.aspx?search=202542554' },
+    { id:'287367154', title:'Сумка', platform:'WB', article:'287367154', img:'./images/wish-287367154.jpg', url:'https://www.wildberries.ru/catalog/0/search.aspx?search=287367154' },
+    { id:'2695637854', title:'Мист', platform:'Ozon', article:'2695637854', img:'./images/wish-2695637854.jpg', url:'https://www.ozon.ru/search/?text=2695637854' },
+    { id:'RTLAEG952101', title:'Толстовка', platform:'Lamoda', article:'RTLAEG952101', img:'./images/wish-RTLAEG952101.jpg', url:'https://www.lamoda.ru/catalogsearch/result/?q=RTLAEG952101' },
+    { id:'popmart', title:'Фигурка Pop Mart', platform:'Читай-город', article:'POP MART', img:'./images/wish-popmart.jpg', url:'https://www.chitai-gorod.ru/search?q=pop%20mart' },
+  ];
+  function loadBooked(){ try { return JSON.parse(localStorage.getItem('booked')||'{}'); } catch(e){ return {}; } }
+  function saveBooked(map){ localStorage.setItem('booked', JSON.stringify(map)); }
+  function renderWishlist(){
+    const grid = document.getElementById('wishGrid');
+    const booked = loadBooked();
+    grid.innerHTML = '';
+    wishlist.forEach(item=>{
+      const card = document.createElement('div'); card.className = 'wish-card'; if(booked[item.id]) card.classList.add('booked');
+      const badge = document.createElement('span'); badge.className = 'booked-badge'; badge.textContent = 'Забронировано'; card.appendChild(badge);
+      if(item.img){ const img = document.createElement('img'); img.className='wish-img'; img.src=item.img; img.alt=item.title; card.appendChild(img); }
+      const body = document.createElement('div'); body.className='wish-body';
+      const h = document.createElement('div'); h.className='wish-title'; h.textContent=item.title;
+      const meta = document.createElement('div'); meta.className='wish-meta'; meta.textContent = `${item.platform} · Арт. ${item.article}`;
+      const actions = document.createElement('div'); actions.className='wish-actions';
+      const link = document.createElement('a'); link.className='btn btn-ghost'; link.target='_blank'; link.rel='noopener'; link.href=item.url; link.textContent='Открыть';
+      const btn = document.createElement('button'); btn.className='btn btn-primary'; btn.textContent = booked[item.id] ? 'Снять бронь' : 'Забронировать';
+      btn.addEventListener('click', ()=>{ const map = loadBooked(); map[item.id] = !map[item.id]; saveBooked(map); renderWishlist(); });
+      actions.appendChild(link); actions.appendChild(btn);
+      body.appendChild(h); body.appendChild(meta); body.appendChild(actions);
+      card.appendChild(body); grid.appendChild(card);
+    });
+  }
+  renderWishlist();
+
+  // Photo preview + Telegram
+  const input = document.getElementById('photoInput');
+  const preview = document.getElementById('photoPreview');
+  input?.addEventListener('change', ()=>{
+    preview.innerHTML = '';
+    [...input.files].slice(0,12).forEach(file=>{
+      const url = URL.createObjectURL(file);
+      const img = document.createElement('img');
+      img.src = url; img.alt = file.name; img.style.borderRadius='12px'; img.style.border='1px solid #eadfe1';
+      preview.appendChild(img);
+    });
+  });
+  const wish = document.getElementById('wishText');
+  const sendWish = document.getElementById('sendWish');
+  sendWish?.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const text = encodeURIComponent('Пожелание для Кристины: ' + (wish.value||''));
+    window.open('https://t.me/dioravva?text=' + text, '_blank');
+  });
+</script>
+</body>
+</html>
